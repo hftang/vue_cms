@@ -14,9 +14,20 @@
   }
 </script>
 
-<style lang="scss" scoped>
+<style lang="stylus" rel="stylesheet/stylus">
   .mint-swipe-items-wrap {
     height: 200px;
+    .mint-swipe-item {
+      &:nth-child(1) {
+        background-color: red
+      }
+      &:nth-child(2){
+        background-color: yellow
+      }
+      &:nth-child(3){
+        background-color: blue
+      }
+    }
   }
 
 </style>
