@@ -2,7 +2,7 @@
   <div class="app-container">
 
     <!-- 顶部的header -->
-    <mt-header fixed title="固定在顶部"></mt-header>
+    <mt-header fixed title="学习vue"></mt-header>
 
     <!-- 中间 route-view -->
 
