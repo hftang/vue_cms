@@ -7,6 +7,7 @@ import './lib/mui/css/icons-extra.css'
 
 //导入mint-ui
 import { Header, Swipe, SwipeItem } from 'mint-ui';
+import './mock/mockServer'//加载mock模拟数据
 
 Vue.component(Header.name, Header);
 Vue.component(Swipe.name, Swipe);
