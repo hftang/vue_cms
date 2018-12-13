@@ -7,6 +7,7 @@ import ShopCarContainer from '../components/tabbar/ShopCarContainer'
 import SearchContainer from '../components/tabbar/SearchContainer'
 import NewsList from '../components/news/NewsList'
 import NewsInfo from '../components/news/NewsInfo'
+import PhotoList from '../components/photos/PhotoList'
 
 Vue.use(Router)
 
@@ -23,6 +24,7 @@ export default new Router({
     {path: '/search', component: SearchContainer},
     {path: '/home/newslist', component: NewsList},
     {path: '/home/newsinfo/:id', component: NewsInfo},//传参数/:id
+    {path: '/home/photolist', component: PhotoList},
 
   ],
   linkActiveClass: 'mui-active'//选中那个tabel 给设置样式
