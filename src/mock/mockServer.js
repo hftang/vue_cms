@@ -18,5 +18,7 @@ Mock.mock('/getnewslist', {code: 0, data: data.newslist})
 Mock.mock('/getnewsinfos', {code: 0, data: data.newsinfo})
 //获取评论
 Mock.mock(RegExp('/getmements' + ".*"), "get", {code: 0, data: data.mementlist})
+//提交评论
+Mock.mock('/submitcomments', {code: 0, data: data.submitcomments})
 
 // export default ???  不需要向外暴露任何数据, 只需要保存能执行即可

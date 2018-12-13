@@ -2,10 +2,10 @@
   <div class="cmt-container">
     <h3>发表评论</h3>
     <hr/>
-    <textarea placeholder="请输入要评论的内容" maxlength="120">
+    <textarea placeholder="请输入要评论的内容" maxlength="120" v-model="msg">
 
     </textarea>
-    <mt-button type="primary" size="large">发表评论</mt-button>
+    <mt-button type="primary" size="large" @click="sendmenments">发表评论</mt-button>
 
     <!--评论列表-->
     <div class="cmt-list">
@@ -31,7 +31,8 @@
     data() {
       return {
         mements: [],
-        pageIndex: 1
+        pageIndex: 1,
+        msg: ''
       }
     },
     created() {
@@ -41,7 +42,7 @@
     methods: {
       async getMements() {
 
-        const result = await  reqMementLists(this.id, this.pageIndex)
+        const result = await reqMementLists(this.id, this.pageIndex)
         if (result.code === 0) {
           //不要覆盖 要累加
           this.mements = this.mements.concat(result.data)
@@ -54,6 +55,28 @@
       getMore() {
         this.pageIndex++
         this.getMements()
+      },
+      sendmenments() {
+        if (this.msg.trim().length === 0) {
+          return Toast('评论内容不能为空！')
+        } else {
+          this.$http.get('/submitcomments')
+            .then((result) => {
+               console.log(result)
+                if (result.body.code === 0) {
+                  Toast('添加评论成功！')
+                  const cmt = {
+                    user_name: 'hftang',
+                    add_time: Date.now(),
+                    content: this.msg.trim()
+                  }
+                  this.mements.unshift(cmt)
+                }
+              },
+              (err) => {
+
+              })
+        }
       }
     },
     props: ["id"]

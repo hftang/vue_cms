@@ -23,6 +23,10 @@ Vue.filter('dateFormat', function (dateStr, pattern = "YYYY-MM-DD HH:mm:ss") {
   return moment(dateStr).format(pattern)
 
 })
+//导入vue-resource
+import VueResource from 'vue-resource'
+Vue.use(VueResource)
+// Vue.http.options.root('http://localhost:8080/')
 
 
 /* eslint-disable no-new */
