@@ -3,6 +3,7 @@
 函数的返回值: promise对象
  */
 import ajax from './ajax'
+
 const BASE_URL = '/api'
 // 7、发送短信验证码
 export const reqSendCode = (phone) => ajax(BASE_URL + '/sendcode', {phone})
@@ -22,6 +23,8 @@ export const reqShopGoods = () => ajax('/goods')
 //获取图片轮播图luobotu
 export const reqluobotu = () => ajax('/luobotu')
 //获取新闻列表
-export  const reqNewsList=()=>ajax('/getnewslist')
+export const reqNewsList = () => ajax('/getnewslist')
 //获取新闻详情
-export const  reqNewsInfos=()=>ajax('/getnewsinfos')
+export const reqNewsInfos = () => ajax('/getnewsinfos')
+//获取评论列表
+export const reqMementLists = (id, pageIndex) => ajax('/getmements', {id, pageIndex}, "GET")

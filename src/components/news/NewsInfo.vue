@@ -10,12 +10,18 @@
 
 
     </div>
+    <!--父向子传递 属性  在 子组件那边 props 写上-->
+    <Comment :id="this.id">
+
+    </Comment>
+
   </div>
 </template>
 
 <script>
   import {reqNewsInfos} from "../../api/index"
   import {Toast} from 'mint-ui'
+  import Comment from '../subcomponents/comment'
 
   export default {
 
@@ -28,6 +34,9 @@
 
     created() {
       this.getNewsInfo();
+    },
+    components: {
+      Comment,
     },
 
     methods: {
@@ -63,7 +72,7 @@
       color #007aff
     }
     .content {
-      img{
+      img {
         width: 100%
       }
     }
