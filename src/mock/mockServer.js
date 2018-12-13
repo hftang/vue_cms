@@ -14,5 +14,7 @@ Mock.mock('/info', {code: 0, data: data.info})
 Mock.mock('/luobotu', {code: 0, data: data.luobotu})
 //新闻列表
 Mock.mock('/getnewslist', {code: 0, data: data.newslist})
+//获取新闻详情
+Mock.mock('/getnewsinfos', {code: 0, data: data.newsinfo})
 
 // export default ???  不需要向外暴露任何数据, 只需要保存能执行即可

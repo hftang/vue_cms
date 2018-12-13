@@ -23,3 +23,5 @@ export const reqShopGoods = () => ajax('/goods')
 export const reqluobotu = () => ajax('/luobotu')
 //获取新闻列表
 export  const reqNewsList=()=>ajax('/getnewslist')
+//获取新闻详情
+export const  reqNewsInfos=()=>ajax('/getnewsinfos')
