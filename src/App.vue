@@ -40,6 +40,7 @@
 <style>
   .app-container {
     padding-top: 40px;
+    padding-bottom: 50px;
     /*//消除切换页面有滚动条的问题*/
     overflow-x: hidden;
 

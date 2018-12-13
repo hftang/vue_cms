@@ -25,5 +25,5 @@ export default new Router({
     {path: '/search', component: SearchContainer},
     {path: '/home/newslist', component: NewsList}
   ],
-  linkActiveClass: 'mui-active'
+  linkActiveClass: 'mui-active'//选中那个tabel 给设置样式
 })

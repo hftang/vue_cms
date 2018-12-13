@@ -21,3 +21,5 @@ export const reqShopRatings = () => ajax('/ratings')
 export const reqShopGoods = () => ajax('/goods')
 //获取图片轮播图luobotu
 export const reqluobotu = () => ajax('/luobotu')
+//获取新闻列表
+export  const reqNewsList=()=>ajax('/getnewslist')
