@@ -1540,5 +1540,31 @@
   ],
   "submitcomments": {
     "message": "提交评论成功！"
-  }
+  },
+  "getimagecategory": [
+    {
+      "title": "家居",
+      "id": 10
+    },
+    {
+      "title": "科技",
+      "id": 11
+    },
+    {
+      "title": "笑话",
+      "id": 12
+    },
+    {
+      "title": "小说",
+      "id": 13
+    },
+    {
+      "title": "美女",
+      "id": 14
+    },
+    {
+      "title": "图片",
+      "id": 15
+    }
+  ]
 }
