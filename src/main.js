@@ -5,14 +5,14 @@ import 'mint-ui/lib/style.css'
 import './lib/mui/css/mui.css'
 import './lib/mui/css/icons-extra.css'
 
-//导入mint-ui
-import {Header, Swipe, SwipeItem, Button} from 'mint-ui';
-import './mock/mockServer'//加载mock模拟数据
 
-Vue.component(Header.name, Header);
-Vue.component(Swipe.name, Swipe);
-Vue.component(SwipeItem.name, SwipeItem);
-Vue.component(Button.name, Button);
+import './mock/mockServer'//加载mock模拟数据
+//导入mint-ui
+// import {Header, Swipe, SwipeItem, Button} from 'mint-ui';
+// Vue.component(Header.name, Header);
+// Vue.component(Swipe.name, Swipe);
+// Vue.component(SwipeItem.name, SwipeItem);
+// Vue.component(Button.name, Button);
 
 //设置全局的时间过滤器
 //导入时间插件
@@ -25,8 +25,21 @@ Vue.filter('dateFormat', function (dateStr, pattern = "YYYY-MM-DD HH:mm:ss") {
 })
 //导入vue-resource
 import VueResource from 'vue-resource'
+
 Vue.use(VueResource)
 // Vue.http.options.root('http://localhost:8080/')
+
+//导入mint-ui 的图片懒加载
+// import {Lazyload} from 'mint-ui'
+//
+// Vue.use(Lazyload)
+
+import MintUi from 'mint-ui'
+Vue.use(MintUi)
+import 'mint-ui/lib/style.css'
+
+import VuePreview from 'vue-preview'
+Vue.use(VuePreview)
 
 
 /* eslint-disable no-new */

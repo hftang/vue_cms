@@ -28,3 +28,5 @@ export const reqNewsList = () => ajax('/getnewslist')
 export const reqNewsInfos = () => ajax('/getnewsinfos')
 //获取评论列表
 export const reqMementLists = (id, pageIndex) => ajax('/getmements', {id, pageIndex}, "GET")
+//获取图片详情
+export const reqImageInfos = (imageId) => ajax('/getimageinfos', {imageId}, "GET")
