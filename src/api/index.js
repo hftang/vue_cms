@@ -34,3 +34,5 @@ export const reqImageInfos = (imageId) => ajax('/getimageinfos', {imageId}, "GET
 export const reqGoodsList = (indexPage) => ajax('/getgoodslist', {indexPage}, "GET")
 //获取图片轮播图luobotu02
 export const reqluobotu02 = () => ajax('/luobotu02')
+//获取商品的详情
+export const reqGoodsInfos = (goodsId) => ajax('/getgoodsinfos', {goodsId}, "GET")

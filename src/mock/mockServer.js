@@ -30,4 +30,6 @@ Mock.mock(RegExp('/getimageinfos' + ".*"), "get", {code: 0, data: data.getimagei
 Mock.mock(RegExp('/getgoodslist' + '.*'), 'get', {code: 0, data: data.goodslist})
 //轮播图02
 Mock.mock('/luobotu02', {code: 0, data: data.luobotu02})
+//获取商品的详情
+Mock.mock(RegExp('/getgoodsinfos' + '.*'), 'get',{code: 0, data: data.goodsinfos})
 // export default ???  不需要向外暴露任何数据, 只需要保存能执行即可

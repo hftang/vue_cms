@@ -1662,7 +1662,6 @@
       "market_price": 2699,
       "stock_quantity": 80
     }
-
   ],
   "luobotu02": [
     {
@@ -1674,5 +1673,14 @@
     {
       "url": "https://img14.360buyimg.com/cms/jfs/t29743/5/679884322/46217/72d6f8ae/5bfb61f4Nee067d63.png!q95.png"
     }
-  ]
+  ],
+  "goodsinfos": {
+    "id": 101,
+    "title": "华为手机 meta p20 4G 980 ai 4G 全网通手机",
+    "add_time": "2018-10-09 12:00:00",
+    "goods_no": "SD3897302344",
+    "stock_quantity": 300,
+    "market_price": 4779,
+    "sell_price": 4599
+  }
 }
