@@ -9,7 +9,9 @@
     <hr>
 
     <!--缩图区-->
-    <vue-preview :slides="slide1" @close="handleClose"></vue-preview>
+    <div class="thumb">
+      <vue-preview :slides="slide1" @close="handleClose"></vue-preview>
+    </div>
 
     <!--图片内容区-->
     <div class="content" v-html="msg.content">
@@ -39,16 +41,47 @@
             msrc: 'https://farm6.staticflickr.com/5591/15008867125_68a8ed88cc_m.jpg',
             alt: 'picture1',
             title: 'Image Caption 1',
-            w: 600,
-            h: 400
+            w: 80,
+            h: 200
           },
           {
             src: 'https://farm4.staticflickr.com/3902/14985871946_86abb8c56f_b.jpg',
             msrc: 'https://farm4.staticflickr.com/3902/14985871946_86abb8c56f_m.jpg',
             alt: 'picture2',
             title: 'Image Caption 2',
-            w: 1200,
-            h: 900
+            w: 80,
+            h: 200
+          },
+          {
+            src: 'https://farm6.staticflickr.com/5591/15008867125_68a8ed88cc_b.jpg',
+            msrc: 'https://farm6.staticflickr.com/5591/15008867125_68a8ed88cc_m.jpg',
+            alt: 'picture1',
+            title: 'Image Caption 1',
+            w: 80,
+            h: 200
+          },
+          {
+            src: 'https://farm4.staticflickr.com/3902/14985871946_86abb8c56f_b.jpg',
+            msrc: 'https://farm4.staticflickr.com/3902/14985871946_86abb8c56f_m.jpg',
+            alt: 'picture2',
+            title: 'Image Caption 2',
+            w: 80,
+            h: 200
+          }, {
+            src: 'https://farm6.staticflickr.com/5591/15008867125_68a8ed88cc_b.jpg',
+            msrc: 'https://farm6.staticflickr.com/5591/15008867125_68a8ed88cc_m.jpg',
+            alt: 'picture1',
+            title: 'Image Caption 1',
+            w: 80,
+            h: 200
+          },
+          {
+            src: 'https://farm4.staticflickr.com/3902/14985871946_86abb8c56f_b.jpg',
+            msrc: 'https://farm4.staticflickr.com/3902/14985871946_86abb8c56f_m.jpg',
+            alt: 'picture2',
+            title: 'Image Caption 2',
+            w: 80,
+            h: 200
           }
         ]
       }
@@ -70,7 +103,7 @@
           Toast('获取imageInfo失败')
         }
       },
-      handleClose () {
+      handleClose() {
         console.log('close event')
       }
     }
@@ -100,6 +133,14 @@
       img {
         width: 100%
       }
+    }
+    .thumb {
+
+      image {
+        margin 10px
+        box-shadow 0 0 12px #999
+      }
+
     }
 
   }

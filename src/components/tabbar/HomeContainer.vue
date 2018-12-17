@@ -16,15 +16,17 @@
       </li>
       <li class="mui-table-view-cell mui-media mui-col-xs-4 mui-col-sm-3">
         <router-link to="/home/photolist">
-        <!--<span class="mui-icon mui-icon-email"><span class="mui-badge">5</span></span>-->
-        <img src="../../images/menu2.png" alt="">
-        <div class="mui-media-body">图片分享</div>
-      </router-link>
+          <!--<span class="mui-icon mui-icon-email"><span class="mui-badge">5</span></span>-->
+          <img src="../../images/menu2.png" alt="">
+          <div class="mui-media-body">图片分享</div>
+        </router-link>
       </li>
-      <li class="mui-table-view-cell mui-media mui-col-xs-4 mui-col-sm-3"><a href="#">
-        <img src="../../images/menu3.png" alt="">
-        <div class="mui-media-body">商品购买</div>
-      </a></li>
+      <li class="mui-table-view-cell mui-media mui-col-xs-4 mui-col-sm-3">
+        <router-link to="/home/goodslist">
+          <img src="../../images/menu3.png" alt="">
+          <div class="mui-media-body">商品购买</div>
+        </router-link>
+      </li>
       <li class="mui-table-view-cell mui-media mui-col-xs-4 mui-col-sm-3"><a href="#">
         <img src="../../images/menu4.png" alt="">
         <div class="mui-media-body">留言反馈</div>
