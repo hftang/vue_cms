@@ -66,7 +66,7 @@
           this.goodsList = this.goodsList.concat(dataSource)
         }
       },
-      
+
       //第二种跳转路由的方法
       goGoodsInfos(id) {
         this.$router.push('/home/goodsinfo/' + id)
