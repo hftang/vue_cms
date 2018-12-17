@@ -7,7 +7,7 @@
       <!--</mt-swipe-item>-->
     <!--</mt-swipe>-->
     <!--mui 的九宫格-->
-   <Swipe :lubotuList="lubotuList"></Swipe>
+   <Swipe :lubotuList="lubotuList" isfull="true"></Swipe>
     <ul class="mui-table-view mui-grid-view mui-grid-9">
       <li class="mui-table-view-cell mui-media mui-col-xs-4 mui-col-sm-3">
         <router-link to="/home/newslist">

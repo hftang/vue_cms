@@ -32,3 +32,5 @@ export const reqMementLists = (id, pageIndex) => ajax('/getmements', {id, pageIn
 export const reqImageInfos = (imageId) => ajax('/getimageinfos', {imageId}, "GET")
 //获取商品列表
 export const reqGoodsList = (indexPage) => ajax('/getgoodslist', {indexPage}, "GET")
+//获取图片轮播图luobotu02
+export const reqluobotu02 = () => ajax('/luobotu02')

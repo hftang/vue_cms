@@ -6,7 +6,7 @@
     <div class="mui-card first">
       <div class="mui-card-content">
         <div class="mui-card-content-inner">
-          <Swipe :lubotuList="lubotuList"></Swipe>
+          <Swipe :lubotuList="lubotuList" isfull="false"></Swipe>
         </div>
       </div>
     </div>
@@ -37,7 +37,7 @@
 
 <script>
   import Swipe from '../subcomponents/Swipe'
-  import {reqluobotu}from'../../api/index'
+  import {reqluobotu02}from'../../api/index'
 
   export default {
     data() {
@@ -54,7 +54,7 @@
     methods: {
       async getlunbotu() {
 
-        const result = await  reqluobotu()
+        const result = await  reqluobotu02()
         if (result.code === 0) {
           this.lubotuList = result.data
         }
@@ -70,13 +70,5 @@
     overflow hidden
   }
 
-  .goodsinfo-container{
-    .first{
-      .mui-card-content-inner{
-        padding 0px
-        
-      }
-    }
-  }
 
 </style>
