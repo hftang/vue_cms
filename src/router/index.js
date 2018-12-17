@@ -10,6 +10,7 @@ import NewsInfo from '../components/news/NewsInfo'
 import PhotoList from '../components/photos/PhotoList'
 import PhotoInfo from '../components/photos/PhotoInfo'
 import GoodsList from '../components/goods/GoodsList'
+import GoodsInfo from '../components/goods/GoodsInfo'
 
 Vue.use(Router)
 
@@ -28,7 +29,8 @@ export default new Router({
     {path: '/home/newsinfo/:id', component: NewsInfo},//传参数/:id
     {path: '/home/photolist', component: PhotoList},
     {path: '/home/photoinfo/:id', component: PhotoInfo},
-    {path: '/home/goodslist', component: GoodsList}
+    {path: '/home/goodslist', component: GoodsList},
+    {path: '/home/goodsinfo/:id', component: GoodsInfo}
 
   ],
   linkActiveClass: 'mui-active'//选中那个tabel 给设置样式

@@ -30,3 +30,5 @@ export const reqNewsInfos = () => ajax('/getnewsinfos')
 export const reqMementLists = (id, pageIndex) => ajax('/getmements', {id, pageIndex}, "GET")
 //获取图片详情
 export const reqImageInfos = (imageId) => ajax('/getimageinfos', {imageId}, "GET")
+//获取商品列表
+export const reqGoodsList = (indexPage) => ajax('/getgoodslist', {indexPage}, "GET")

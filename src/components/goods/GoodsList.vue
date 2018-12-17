@@ -1,68 +1,77 @@
 <template>
   <div class="goodslist">
 
-    <div class="goods-item">
-      <img src="http://m.360buyimg.com/babel/jfs/t1/232/35/2468/110752/5b9613a5E5348ee6d/70db14139612b658.jpg!q70.jpg"
-           alt="">
-      <h3>华为手机为爱国而买，真的爱国哦。前进前进</h3>
+    <!--<router-link class="goods-item" v-for="(item,index) in goodsList" :to="'/home/goodsinfo/'+item.id">-->
+    <!--<img :src='item.img_url'>-->
+    <!--<h3>{{item.title}}</h3>-->
+    <!--<div class="info">-->
+    <!--<p class="price">-->
+    <!--<span class="now">￥{{item.sell_price}}</span>-->
+    <!--<span class="old">￥{{item.market_price}}</span>-->
+    <!--</p>-->
+    <!--<p class="sell">-->
+    <!--<span>热卖中</span>-->
+    <!--<span>剩{{item.stock_quantity}}件</span>-->
+    <!--</p>-->
+    <!--</div>-->
+    <!--</router-link>-->
 
+
+    <div class="goods-item" v-for="(item,index) in goodsList" @click="goGoodsInfos(item.id)">
+      <img :src='item.img_url'>
+      <h3>{{item.title}}</h3>
       <div class="info">
         <p class="price">
-          <span class="now">￥1999</span>
-          <span class="old">￥2999</span>
+          <span class="now">￥{{item.sell_price}}</span>
+          <span class="old">￥{{item.market_price}}</span>
         </p>
-
         <p class="sell">
           <span>热卖中</span>
-          <span>剩90件</span>
+          <span>剩{{item.stock_quantity}}件</span>
         </p>
       </div>
     </div>
-
-    <div class="goods-item">
-      <img src="http://m.360buyimg.com/babel/jfs/t1/232/35/2468/110752/5b9613a5E5348ee6d/70db14139612b658.jpg!q70.jpg"
-           alt="">
-      <h3>华为手机为爱国而买，真的sdsdafsdfsadfsadfsdfsdafsdfsdfdsfsadfsdafsdafsdafsdfs
-        adfsdfsdfsdfsdfeww
-        wesdsDs</h3>
-
-      <div class="info">
-        <p class="price">
-          <span class="now">￥1999</span>
-          <span class="old">￥2999</span>
-        </p>
-
-        <p class="sell">
-          <span>热卖中</span>
-          <span>剩90件</span>
-        </p>
-      </div>
-    </div>
-
-    <div class="goods-item">
-      <img src="http://m.360buyimg.com/babel/jfs/t1/232/35/2468/110752/5b9613a5E5348ee6d/70db14139612b658.jpg!q70.jpg"
-           alt="">
-      <h3>华为手机为爱国而买，真的爱国哦。前进前进</h3>
-
-      <div class="info">
-        <p class="price">
-          <span class="now">￥1999</span>
-          <span class="old">￥2999</span>
-        </p>
-
-        <p class="sell">
-          <span>热卖中</span>
-          <span>剩90件</span>
-        </p>
-      </div>
-    </div>
-
+    <!--加载更多按钮-->
+    <mt-button type="danger" size="large" @click="loadMore()">加载更多</mt-button>
   </div>
 </template>
 
 <script>
+  import {reqGoodsList} from '../../api/index'
+
+
   export default {
-    name: "goods-list"
+    data() {
+      return {
+        indexPage: 0,
+        goodsList: []
+      }
+    },
+    mounted() {
+      this.getGoodsList()
+
+    },
+    methods: {
+
+      loadMore() {
+        this.indexPage++
+        this.getGoodsList()
+
+
+      },
+      async getGoodsList() {
+        const result = await reqGoodsList(this.indexPage)
+        if (result.code === 0) {
+          const dataSource = result.data
+          this.goodsList = this.goodsList.concat(dataSource)
+        }
+      },
+      
+      //第二种跳转路由的方法
+      goGoodsInfos(id) {
+        this.$router.push('/home/goodsinfo/' + id)
+      }
+    }
   }
 </script>
 
@@ -95,7 +104,7 @@
 
       .info {
         background-color: #ddd
-        p{
+        p {
           margin 0px
           padding 5px
 
