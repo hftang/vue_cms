@@ -61,7 +61,7 @@
 </template>
 <script>
   import Swipe from '../subcomponents/Swipe'
-  import {reqluobotu02, reqGoodsInfos} from '../../api/index'
+  import {reqGoodsInfos, reqluobotu02} from '../../api/index'
   import GoodsInfosNumBox from '../subcomponents/GoodsInfo-Numbox'
 
   export default {
@@ -85,7 +85,7 @@
     methods: {
       async getlunbotu() {
 
-        const result = await  reqluobotu02()
+        const result = await reqluobotu02()
         if (result.code === 0) {
           this.lubotuList = result.data
         }
@@ -114,7 +114,11 @@
           price: this.goods.sell_price,
           selected: true
         }
-        
+
+        //调用
+        this.$store.commit("addToCar", goods)
+
+
       },
 
       beforeEnter: function (el) {
