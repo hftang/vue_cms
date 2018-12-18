@@ -45,9 +45,13 @@ Vue.use(VuePreview)
 
 Vue.use(Vuex)
 
+//因为每次main函数必须启动 所以 在这里解析下 localstorage中的car
+
+var car = JSON.parse(localStorage.getItem("car") || '[]')
+
 const store = new Vuex.Store({
   state: {
-    car: [],
+    car: car,
   },
   mutations: {
 
@@ -65,6 +69,9 @@ const store = new Vuex.Store({
       if (!flag) {
         state.car.push(goodinfos)
       }
+
+      //持久化 car 到本地
+      localStorage.setItem('car', JSON.stringify(state.car))
 
     }
 
