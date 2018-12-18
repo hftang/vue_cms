@@ -1,8 +1,15 @@
 <template>
-
   <div class="goodsinfo-container">
-    <!--卡片式布局-->
+    <transition
+      v-on:before-enter="beforeEnter"
+      v-on:enter="enter"
+      v-on:after-enter="afterEnter">
 
+      <div class="ball" v-show="ballFrag"></div>
+
+    </transition>
+
+    <!--卡片式布局-->
     <div class="mui-card first">
       <div class="mui-card-content">
         <div class="mui-card-content-inner">
@@ -28,7 +35,7 @@
 
           <p>
             <mt-button type="primary" size="small">立即购买</mt-button>
-            <mt-button type="danger" size="small"> 加入购物车</mt-button>
+            <mt-button type="danger" size="small" @click="addShopCart"> 加入购物车</mt-button>
           </p>
 
         </div>
@@ -54,19 +61,18 @@
   </div>
 
 </template>
-
 <script>
   import Swipe from '../subcomponents/Swipe'
   import {reqluobotu02, reqGoodsInfos} from '../../api/index'
   import GoodsInfosNumBox from '../subcomponents/GoodsInfo-Numbox'
-
 
   export default {
     data() {
       return {
         lubotuList: [],
         id: this.$route.params.id,
-        goods: Object
+        goods: Object,
+        ballFrag: false
       }
     },
     components: {
@@ -99,30 +105,90 @@
       },
       goComment(id) {
         this.$router.push({name: "goodscomment", params: {id}})
-      }
+      },
+      addShopCart() {
+        this.ballFrag = !this.ballFrag
+        // console.log('---->' + this.ballFrag)
+      },
+
+      beforeEnter: function (el) {
+
+        el.style.transform = 'translate(0px, 0px)'
+      },
+
+      afterEnter(el) {
+        this.ballFrag = !this.ballFrag
+      },
+      enter(el, done) {
+        el.offsetWidth;
+        el.style.transform = 'translate(70px,220px)'
+        el.style.transition = 'all 1s ease'
+        done()
+      },
+
 
     }
   }
 </script>
 
-<style lang="stylus" rel="stylesheet/stylus">
-  .goodsinfo-container {
+<style>
+  /*.goodsinfo-container {
     background-color: #eee
     overflow hidden
-
     .now_price {
       color red
       font-size 16px
       font-weight bold
     }
-
     .mui-card-footer {
       display block
       button {
         margin 10px 0px
       }
     }
+    .ball {
+      width: 15px
+      height: 15px
+      background-color: red
+      border-radius 50%
+      position absolute
+      z-index 199
+      left: 154px
+      top: 409px
+    }
+  }
+*/
+  .goodsinfo-container {
+    background-color: #eee;
+    overflow: hidden;
   }
 
+  .goodsinfo-container .now_price {
+    color: red;
+    font-size: 16px;
+    font-weight: bold
+  }
+
+  .goodsinfo-container .mui-card-footer {
+
+    display: block;
+
+  }
+
+  .goodsinfo-container .mui-card-footer button {
+    margin: 10px 0px;
+  }
+
+  .goodsinfo-container .ball {
+    width: 15px;
+    height: 15px;
+    background-color: red;
+    border-radius: 50%;
+    position: absolute;
+    z-index: 199;
+    left: 154px;
+    top: 409px;
+
+  }
 
 </style>
