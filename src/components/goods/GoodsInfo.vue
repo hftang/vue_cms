@@ -107,7 +107,14 @@
       },
       addShopCart() {
         this.ballFrag = !this.ballFrag
-        // console.log('---->' + this.ballFrag)
+        //创建一个商品信息
+        const goods = {
+          id: this.id,
+          count: this.selectCount,
+          price: this.goods.sell_price,
+          selected: true
+        }
+        
       },
 
       beforeEnter: function (el) {

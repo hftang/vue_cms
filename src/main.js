@@ -35,16 +35,35 @@ Vue.use(VueResource)
 // Vue.use(Lazyload)
 
 import MintUi from 'mint-ui'
+
 Vue.use(MintUi)
 import 'mint-ui/lib/style.css'
 
 import VuePreview from 'vue-preview'
+
 Vue.use(VuePreview)
+
+// import store from './store/index'
+
+import Vuex from 'vuex'
+
+Vue.use(Vuex)
+
+const store = new Vuex.Store({
+  state: {
+    car: [],
+  },
+  mutations: {},
+  getters: {}
+
+})
 
 
 /* eslint-disable no-new */
 new Vue({
   el: '#app',
   router,
-  render: c => c(app)
+  render: c => c(app),
+  store
+
 })
