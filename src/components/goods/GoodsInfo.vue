@@ -5,7 +5,7 @@
       v-on:enter="enter"
       v-on:after-enter="afterEnter">
 
-      <div class="ball" v-show="ballFrag"></div>
+      <div class="ball" v-show="ballFrag" ref="ball"></div>
 
     </transition>
 
@@ -30,7 +30,7 @@
 
           <p>
             购买数量：
-            <GoodsInfosNumBox></GoodsInfosNumBox>
+            <GoodsInfosNumBox @getcount="getSelectCount" :maxNum="goods.stock_quantity"></GoodsInfosNumBox>
           </p>
 
           <p>
@@ -56,8 +56,6 @@
         <mt-button size="large" type="danger" plain @click="goComment(id)">商品评论</mt-button>
       </div>
     </div>
-
-
   </div>
 
 </template>
@@ -72,7 +70,8 @@
         lubotuList: [],
         id: this.$route.params.id,
         goods: Object,
-        ballFrag: false
+        ballFrag: false,
+        selectCount: 1
       }
     },
     components: {
@@ -112,8 +111,7 @@
       },
 
       beforeEnter: function (el) {
-
-        el.style.transform = 'translate(0px, 0px)'
+        el.style.transform = "translate(0px, 0px)"
       },
 
       afterEnter(el) {
@@ -121,13 +119,23 @@
       },
       enter(el, done) {
         el.offsetWidth;
-        el.style.transform = 'translate(70px,220px)'
-        el.style.transition = 'all 1s ease'
+        const ballPosition = this.$refs.ball.getBoundingClientRect();
+        const badgePosition = document.getElementById('badge').getBoundingClientRect();
+
+        const xDist = badgePosition.left - ballPosition.left;
+        const yDist = badgePosition.top - ballPosition.top;
+
+        el.style.transform = `translate(${xDist}px,${yDist}px)`;
+        el.style.transition = 'all 1s ease';
         done()
       },
-
+      getSelectCount(count) {
+        this.selectCount = count
+        console.log("父组件拿到的值：" + count)
+      }
 
     }
+
   }
 </script>
 
