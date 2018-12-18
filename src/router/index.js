@@ -11,6 +11,8 @@ import PhotoList from '../components/photos/PhotoList'
 import PhotoInfo from '../components/photos/PhotoInfo'
 import GoodsList from '../components/goods/GoodsList'
 import GoodsInfo from '../components/goods/GoodsInfo'
+import GoodsComments from '../components/goods/GoodsComments'
+import GoodsDesc from '../components/goods/GoodsDesc'
 
 Vue.use(Router)
 
@@ -30,7 +32,9 @@ export default new Router({
     {path: '/home/photolist', component: PhotoList},
     {path: '/home/photoinfo/:id', component: PhotoInfo},
     {path: '/home/goodslist', component: GoodsList},
-    {path: '/home/goodsinfo/:id', component: GoodsInfo}
+    {path: '/home/goodsinfo/:id', component: GoodsInfo},
+    {name: 'goodscomment', path: '/home/goodscomments/:id', component: GoodsComments},
+    {name: "goodsdesc", path: '/home/goodsdesc/:id', component: GoodsDesc}
 
   ],
   linkActiveClass: 'mui-active'//选中那个tabel 给设置样式

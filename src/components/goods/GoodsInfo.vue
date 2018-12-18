@@ -12,13 +12,13 @@
     </div>
 
     <div class="mui-card">
-      <div class="mui-card-header">商品的标题</div>
+      <div class="mui-card-header">{{goods.title}}</div>
       <div class="mui-card-content">
         <div class="mui-card-content-inner">
           <p class="price">
             市场价：
-            <del>￥2999</del>
-            &nbsp,&nbsp;销售价：<span class="now_price">￥2199</span>
+            <del>￥{{goods.market_price}}</del>
+            &nbsp,&nbsp;销售价：<span class="now_price">￥{{goods.sell_price}}</span>
           </p>
 
           <p>
@@ -39,14 +39,14 @@
       <div class="mui-card-header">商品参数</div>
       <div class="mui-card-content">
         <div class="mui-card-content-inner">
-          <p>商品货号：</p>
-          <p>库存情况：</p>
-          <p>上架时间：</p>
+          <p>商品货号：{{goods.goods_no}}</p>
+          <p>库存情况：{{goods.stock_quantity}}件</p>
+          <p>上架时间：{{goods.add_time|dateFormat}}</p>
         </div>
       </div>
       <div class="mui-card-footer">
-        <mt-button size="large" type="primary" plain>图文介绍</mt-button>
-        <mt-button size="large" type="danger" plain>商品评论</mt-button>
+        <mt-button size="large" type="primary" plain @click="goDesc(id)">图文介绍</mt-button>
+        <mt-button size="large" type="danger" plain @click="goComment(id)">商品评论</mt-button>
       </div>
     </div>
 
@@ -65,7 +65,8 @@
     data() {
       return {
         lubotuList: [],
-        id: this.$route.params.id
+        id: this.$route.params.id,
+        goods: Object
       }
     },
     components: {
@@ -73,7 +74,8 @@
       GoodsInfosNumBox
     },
     created() {
-      this.getlunbotu()
+      this.getlunbotu(),
+        this.getGoodsInfos()
     },
     methods: {
       async getlunbotu() {
@@ -85,11 +87,20 @@
 
       },
       async getGoodsInfos() {
-        const result = await reqGoodsInfos()
+        const result = await reqGoodsInfos(this.id)
         if (result.code === 0) {
-
+          this.goods = result.data
         }
+      },
+
+      //使用编程导航的方式 跳转到商品描述 和 评论页面
+      goDesc(id) {
+        this.$router.push({name: "goodsdesc", params: {id}})
+      },
+      goComment(id) {
+        this.$router.push({name: "goodscomment", params: {id}})
       }
+
     }
   }
 </script>

@@ -36,3 +36,5 @@ export const reqGoodsList = (indexPage) => ajax('/getgoodslist', {indexPage}, "G
 export const reqluobotu02 = () => ajax('/luobotu02')
 //获取商品的详情
 export const reqGoodsInfos = (goodsId) => ajax('/getgoodsinfos', {goodsId}, "GET")
+//获取goods desc
+export const reqGoodsDesc = (goodsId) => ajax('/getgoodsdesc', {goodsId}, "GET")
