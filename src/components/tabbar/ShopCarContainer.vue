@@ -32,7 +32,7 @@
         <div class="mui-card-content-inner">
           <div class="left">
             <p>总计（不含运费）</p>
-            <p>已勾选商品<span class="red">0</span>件，总价<span class="red">￥ 100</span></p>
+            <p>已勾选商品<span class="red">{{$store.getters.getShopGoodsCountAndPrice.count}}</span>件，总价<span class="red">￥ {{$store.getters.getShopGoodsCountAndPrice.total}}</span></p>
           </div>
 
           <mt-button type="danger">结算</mt-button>
@@ -82,7 +82,12 @@
 
       },
       //把switch切换的值跟store联动起来
-      onselectchange(id, statue) {
+      onselectchange(idx, statue) {
+
+        this.$store.commit("onchangeSwitch", {
+          id: idx,
+          selected: statue
+        })
 
       }
     }
