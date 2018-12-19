@@ -34,3 +34,5 @@ Mock.mock('/luobotu02', {code: 0, data: data.luobotu02})
 Mock.mock(RegExp('/getgoodsinfos' + '.*'), 'get', {code: 0, data: data.goodsinfos})
 //获取商品desc描述
 Mock.mock(RegExp('/getgoodsdesc' + '.*'), 'get', {code: 0, data: data.goodsdesc})
+//获取购物车里的商品列表
+Mock.mock(RegExp('/getshopcart' + '.*'), "get", {code: 0, data: data.getshopcarlist})

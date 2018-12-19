@@ -73,6 +73,40 @@ const store = new Vuex.Store({
       //持久化 car 到本地
       localStorage.setItem('car', JSON.stringify(state.car))
 
+    },
+
+    //购物车里添加商品个数从新赋值 这边也做保存
+    updateGoodsInfo(state, goodsinfo) {
+      state.car.some(item => {
+        if (item.id == goodsinfo.id) {
+          item.count = parseInt(goodsinfo.count)
+          console.log('--->从新赋值' + item.id)
+          return true
+        }
+      })
+
+      //保存到localstorage中
+      localStorage.setItem("car", JSON.stringify(state.car))
+    },
+    //根据id移除购物车里的内容
+    removeGoodsById(state, id) {
+      console.log("--->" + id)
+      state.car.some((item, index) => {
+        if (item.id == id) {
+          state.car.splice(index, 1)
+          console.log("--->--" + id)
+        }
+      })
+      localStorage.setItem("car", JSON.stringify(state.car))
+
+    },
+    //把switch开关的状态跟 state.car关联起来
+    onchangeSwitch(state, infos) {
+      state.car.forEach(item => {
+        if (item.id == infos.id) {
+          item.selected = infos.selected
+        }
+      })
     }
 
   },
@@ -84,7 +118,31 @@ const store = new Vuex.Store({
       })
 
       return c;
-    }
+    },
+
+    //getgoodscount
+
+    getGoodsCount(state) {
+      var o = {}
+      state.car.forEach(item => {
+        o[item.id] = item.count
+      })
+
+      return o;
+
+    },
+
+    //获取那些switch 开关是被打开的
+
+    getSwitchState(state) {
+      var obj = {};
+      state.car.forEach(item => {
+        obj[item.id] = item.selected
+      })
+      return obj
+    },
+
+
   }
 
 })

@@ -38,3 +38,5 @@ export const reqluobotu02 = () => ajax('/luobotu02')
 export const reqGoodsInfos = (goodsId) => ajax('/getgoodsinfos', {goodsId}, "GET")
 //获取goods desc
 export const reqGoodsDesc = (goodsId) => ajax('/getgoodsdesc', {goodsId}, "GET")
+//获取购物车里已有产品
+export const reqShopCartGoods = (strId) => ajax('/getshopcart', {strId}, "GET")

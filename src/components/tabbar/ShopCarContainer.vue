@@ -2,18 +2,20 @@
   <div class="shopcar-container">
 
     <div class="goods-list">
-      <div class="mui-card">
+      <div class="mui-card" v-for="(item,index ) in goodsList" :key="item.id">
         <div class="mui-card-content">
           <div class="mui-card-content-inner">
 
-            <mt-switch></mt-switch>
-            <img src="../../images/menu1.png" alt="">
+            <mt-switch v-model="$store.getters.getSwitchState[item.id]"
+                       @change="onselectchange(item.id,$store.getters.getSwitchState[item.id])"></mt-switch>
+            <img :src="item.thumb_path" alt="">
             <div class="info">
-              <h3>华为手机hello huawei</h3>
+              <h3>{{item.title}}</h3>
               <p>
-                <span class="price">$2199</span>
-                <shopCarNumBox style="height: 30px"></shopCarNumBox>
-                <a href="#">删除</a>
+                <span class="price">￥{{item.sell_price}}</span>
+                <shopCarNumBox style="height: 30px" :initNum="$store.getters.getGoodsCount[item.id]"
+                               :goodsid="item.id"></shopCarNumBox>
+                <a href="#" @click="remove(index,item.id)">删除</a>
               </p>
             </div>
 
@@ -21,13 +23,20 @@
           </div>
         </div>
       </div>
+
     </div>
 
 
-    <div class="mui-card">
+    <div class="mui-card goumai">
       <div class="mui-card-content">
         <div class="mui-card-content-inner">
-          这是一个最简单的卡片视图控件；卡片视图常用来显示完整独立的一段信息，比如一篇文章的预览图、作者信息、点赞数量等
+          <div class="left">
+            <p>总计（不含运费）</p>
+            <p>已勾选商品<span class="red">0</span>件，总价<span class="red">￥ 100</span></p>
+          </div>
+
+          <mt-button type="danger">结算</mt-button>
+
         </div>
       </div>
     </div>
@@ -36,10 +45,46 @@
 
 <script>
   import shopCarNumBox from '../subcomponents/ShopCarNumBox'
+  import {reqShopCartGoods} from '../../api/index'
 
   export default {
     components: {
       shopCarNumBox
+    },
+    data() {
+      return {
+        goodsList: []
+      }
+    },
+    mounted() {
+      this.reqShopCartContent()
+    },
+    methods: {
+      async reqShopCartContent() {
+
+        var idArr = [];
+        this.$store.state.car.forEach(item => idArr.push(item.id))
+        if (idArr.length <= 0) {
+          result
+        }
+
+
+        const result = await reqShopCartGoods(idArr.join(','))
+        if (result.code === 0) {
+          this.goodsList = result.data
+        }
+
+      },
+      //index 是删除 goodlist的 id 是删除store中的
+      remove(index, id) {
+        this.goodsList.splice(index, 1)
+        this.$store.commit("removeGoodsById", id)
+
+      },
+      //把switch切换的值跟store联动起来
+      onselectchange(id, statue) {
+
+      }
     }
   }
 </script>
@@ -49,7 +94,7 @@
     background-color: #eeeeee
     overflow hidden
     .goods-list {
-      .mui-card-content-inner{
+      .mui-card-content-inner {
         display flex
         align-items center
       }
@@ -57,8 +102,8 @@
       img {
         width: 60px
         height: 60px
-        margin 0px 5px
-        
+        margin 0px 1px
+
       }
       h3 {
         font-size 14px
@@ -71,6 +116,20 @@
         .price {
           color red
           font-weight bold
+        }
+      }
+    }
+    .goumai {
+      .mui-card-content-inner {
+        display flex
+        justify-content space-between
+        align-items center
+
+        .red {
+          color red
+          font-weight bold
+          font-size 18px
+
         }
       }
     }
