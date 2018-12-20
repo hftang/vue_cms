@@ -2,7 +2,11 @@
   <div class="app-container">
 
     <!-- 顶部的header -->
-    <mt-header fixed title="学习vue"></mt-header>
+    <mt-header fixed title="学习vue">
+      <div slot="left" @click="goBack" v-if="isShow">
+        <mt-button icon="back">返回</mt-button>
+      </div>
+    </mt-header>
 
     <!-- 中间 route-view -->
     <transition>
@@ -34,6 +38,32 @@
 </template>
 
 <script>
+  export default {
+    data() {
+      return {
+
+        isShow: true
+      }
+    },
+    methods: {
+      goBack() {
+        this.$router.go(-1)
+      }
+    },
+    created() {
+      this.$route.path === "/home" ? this.isShow = false : this.isShow = true
+    },
+    watch: {
+      "$route.path": function (newVal) {
+        if (newVal === '/home') {
+          this.isShow = false
+        } else {
+          this.isShow = true
+        }
+      }
+    }
+
+  }
 
 </script>
 

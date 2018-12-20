@@ -13,7 +13,7 @@
 
     mounted() {
       //初始化numbox
-      mui('.mui-numbox').numbox()
+      mui(".mui-numbox").numbox()
     },
     methods: {
       countChange() {
